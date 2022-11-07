@@ -79,7 +79,13 @@ public final class Transformers {
      * @param <I> type of the collection elements
      */
     public static <I> List<? extends I> flatten(final Iterable<? extends Collection<? extends I>> base) {
-        return null; 
+        List<I> list = new ArrayList<>();
+        for(Collection<? extends I> col : base) {
+            for (I elem: col) {
+                list.add(elem);
+            }
+        }
+        return list;
     }
 
     /**
