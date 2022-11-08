@@ -81,11 +81,9 @@ public final class Transformers {
     public static <I> List<? extends I> flatten(final Iterable<? extends Collection<? extends I>> base) {
         List<I> list = new ArrayList<>();
         for(Collection<? extends I> col : base) {
-            for (I elem: col) {
-                list.add(elem);
-            }
+            list.addAll(col);
         }
-        return list;
+        return transform(list,Function.identity());
     }
 
     /**
