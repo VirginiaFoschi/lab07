@@ -16,7 +16,9 @@ public final class MonthSorterNested implements MonthSorter {
             @Override
             public int compare(String arg0, String arg1) {
                 // TODO Auto-generated method stub
-                return arg0.compareTo(arg1);
+                Month mese1 = Month.fromString(arg0);
+                Month mese2 = Month.fromString(arg1);
+                return mese1.days.compareTo(mese2.days);
             }
             
         };
@@ -24,7 +26,15 @@ public final class MonthSorterNested implements MonthSorter {
 
     @Override
     public Comparator<String> sortByOrder() {
-        return null;
+        return new Comparator<String>() {
+
+            @Override
+            public int compare(String arg0, String arg1) {
+                // TODO Auto-generated method stub
+                return Month.fromString(arg0).compareTo(Month.fromString(arg1));
+            }
+            
+        };
         
     }
 
@@ -52,11 +62,11 @@ public final class MonthSorterNested implements MonthSorter {
             return mese.name();
         }
         
-        Month fromString(String name) {
+        static Month fromString(String name) {
             Month month=null;
             int trovato=0;
             for(Month mese : Month.values()) {
-                if(toString(mese).startsWith(name.toUpperCase())) {
+                if(mese.toString(mese).startsWith(name.toUpperCase())) {
                     month = mese;
                     trovato++;
                 }
