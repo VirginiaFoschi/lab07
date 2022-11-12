@@ -40,12 +40,12 @@ public class MiniGUI {
         box.setLayout(new BoxLayout(box,BoxLayout.X_AXIS));
         final JButton write = new JButton("Print");
         box.add(write);
-        write.addActionListener(new ActionListener() {
+        /*write.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(final ActionEvent e) {
                 System.out.println(randomGenerator.nextInt());
             }
-        });
+        });*/
         canvas.add(box,BorderLayout.CENTER);
 
         //Part2
@@ -53,6 +53,18 @@ public class MiniGUI {
         final JTextArea textArea = new JTextArea();
         textArea.setLineWrap(true);
         canvas.add(textArea,BorderLayout.NORTH);
+
+        //Part3
+
+        write.addActionListener(new ActionListener() {
+
+            @Override
+            public void actionPerformed(ActionEvent arg0) {
+                // TODO Auto-generated method stub
+                textArea.setText(Integer.toString(randomGenerator.nextInt()));
+            }
+            
+        });
 
 
         frame.setContentPane(canvas);
