@@ -24,6 +24,7 @@ public class MiniGUI {
 
     private static final String TITLE = "A very simple GUI application";
     private static final int PROPORTION = 5;
+    private static final String RESULT_TXT_CONTENT = "Result";
     private final Random randomGenerator = new Random();
     private final JFrame frame = new JFrame(TITLE);
 
@@ -50,7 +51,7 @@ public class MiniGUI {
 
         //Part2
 
-        final JTextArea textArea = new JTextArea();
+        final JTextArea textArea = new JTextArea(RESULT_TXT_CONTENT);
         textArea.setLineWrap(true);
         canvas.add(textArea,BorderLayout.NORTH);
 
@@ -61,7 +62,7 @@ public class MiniGUI {
             @Override
             public void actionPerformed(ActionEvent arg0) {
                 // TODO Auto-generated method stub
-                textArea.setText(Integer.toString(randomGenerator.nextInt()));
+                textArea.setText(RESULT_TXT_CONTENT + ": " + Integer.toString(randomGenerator.nextInt()));
             }
             
         });
