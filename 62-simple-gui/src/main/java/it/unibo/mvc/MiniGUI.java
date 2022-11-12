@@ -4,6 +4,8 @@ import javax.swing.BoxLayout;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
+
 import java.awt.BorderLayout;
 import java.awt.Container;
 import java.awt.Dimension;
@@ -31,22 +33,11 @@ public class MiniGUI {
     public MiniGUI() {
         final JPanel canvas = new JPanel();
         canvas.setLayout(new BorderLayout());
-        //final JButton write = new JButton("Print a random number on standard output");
-        //canvas.add(write, BorderLayout.CENTER);
-        frame.setContentPane(canvas);
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        /*
-         * Handlers
-         */
-        /*write.addActionListener(new ActionListener() {
-            @Override
-            public void actionPerformed(final ActionEvent e) {
-                System.out.println(randomGenerator.nextInt());
-            }
-        });*/
+        
+        //Part1
 
         final JPanel box = new JPanel();
-        box.setLayout(new BoxLayout(new Container(),BoxLayout.X_AXIS));
+        box.setLayout(new BoxLayout(box,BoxLayout.X_AXIS));
         final JButton write = new JButton("Print");
         box.add(write);
         write.addActionListener(new ActionListener() {
@@ -57,6 +48,15 @@ public class MiniGUI {
         });
         canvas.add(box,BorderLayout.CENTER);
 
+        //Part2
+
+        final JTextArea textArea = new JTextArea();
+        textArea.setLineWrap(true);
+        canvas.add(textArea,BorderLayout.NORTH);
+
+
+        frame.setContentPane(canvas);
+        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         
 
     }
