@@ -56,7 +56,7 @@ public final class MonthSorterNested implements MonthSorter {
             Month month=null;
             int trovato=0;
             for(Month mese : Month.values()) {
-                if(toString(mese).contains(name.toUpperCase())) {
+                if(toString(mese).startsWith(name.toUpperCase())) {
                     month = mese;
                     trovato++;
                 }
