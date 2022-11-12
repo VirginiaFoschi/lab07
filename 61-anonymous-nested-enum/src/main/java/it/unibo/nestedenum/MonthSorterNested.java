@@ -11,41 +11,61 @@ public final class MonthSorterNested implements MonthSorter {
 
     @Override
     public Comparator<String> sortByDays() {
-        return null;
+        return new Comparator<String>() {
+
+            @Override
+            public int compare(String arg0, String arg1) {
+                // TODO Auto-generated method stub
+                return arg0.compareTo(arg1);
+            }
+            
+        };
     }
 
     @Override
     public Comparator<String> sortByOrder() {
         return null;
+        
     }
 
     private enum Month{
-        GENNAIO(31,"Gennaio"),
-        FEBBRAIO(28,"Febbraio"),
-        MARZO(31,"Marzo"),
-        APRILE(30,"Aprile"),
-        MAGGIO(31,"Maggio"),
-        GIUGNO(30,"Giugno"),
-        LUGLIO(31,"Luglio"),
-        AGOSTO(31,"Agosto"),
-        SETTEMBRE(30,"Settembre"),
-        OTTOBRE(31,"Ottobre"),
-        NOVEMBRE(30,"Novembre"),
-        DICEMBRE(31,"Dicembre");
+        JANUARY("31"),
+        FEBRUARY("28"),
+        MARCH("31"),
+        APRIL("30"),
+        MAY("31"),
+        JUNE("30"),
+        JULY("31"),
+        AGOUST("31"),
+        SEPTEMBER("30"),
+        OCTOBER("31"),
+        NOVEMBER("30"),
+        DICEMBER("31");
 
-        private int days;
-        private String actualName;
+        public String days;
 
-        private Month(int days, String actualName) {
+        private Month(String days) {
             this.days = days;
-            this.actualName=actualName;
+        }
+
+        private String toString(Month mese) {
+            return mese.name();
         }
         
         Month fromString(String name) {
-            for (Month mese : Month.values()) {
-                if(mese.actualName.equals(name)) return mese;
+            Month month=null;
+            int trovato=0;
+            for(Month mese : Month.values()) {
+                if(toString(mese).contains(name.toUpperCase())) {
+                    month = mese;
+                    trovato++;
+                }
             }
-            return null;
+            if(trovato > 1 || month == null) {
+                System.out.println("ERROR");
+                return null;
+            }
+            else return month;
         }
 
     }
